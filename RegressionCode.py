@@ -8,8 +8,8 @@ from sklearn.neighbors import KNeighborsClassifier
 df = pd.read_csv('src_ip_to_dst.txt')
 sys.stdin = open("src_ip_to_dst.txt")
 
-first_attribute = []
-answer = []
+first_attribute = [] #ip
+answer = [] #signal
 
 for i in range(len(df)):
     a,b,c = list(map(int,input().split()))
@@ -22,8 +22,8 @@ train_input, test_input, train_target, test_target = train_test_split(
     attribute, ans, random_state=42
 )
 
-train_input = train_input.reshape(-1,1)
-test_input = test_input.reshape(-1,1)
+train_input = train_input.reshape(-1,1) #1열 기준으로 한칸내림
+test_input = test_input.reshape(-1,1) #1열기준으로한칸내림 #세로데이터만들기 reshape(-1,2) 2열기준으로 한칸내림, -10000 해도 상관없다. 그냥 내린다는뜻
 
 train_poly = np.column_stack((train_input**2 , train_input))
 test_poly = np.column_stack((test_input**2, test_input))
